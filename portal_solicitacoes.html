@@ -1,0 +1,81 @@
+<style>
+.portal-wrap { padding: 2rem 1rem; max-width: 680px; margin: 0 auto; }
+.portal-header { text-align: center; margin-bottom: 2rem; }
+.portal-header h1 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 6px; }
+.portal-header p { font-size: 14px; color: var(--color-text-secondary); margin: 0; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 16px; text-decoration: none; transition: border-color 0.15s, background 0.15s; cursor: pointer; }
+.card:hover { border-color: var(--color-border-secondary); background: var(--color-background-secondary); }
+.card:active { transform: scale(0.98); }
+.card-icon { width: 48px; height: 48px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+.icon-blue { background: #E6F1FB; color: #185FA5; }
+.icon-teal { background: #E1F5EE; color: #0F6E56; }
+.icon-purple { background: #EEEDFE; color: #534AB7; }
+.icon-amber { background: #FAEEDA; color: #854F0B; }
+.card-text { flex: 1; }
+.card-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 3px; }
+.card-desc { font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.4; }
+.card-arrow { color: var(--color-text-tertiary); font-size: 18px; flex-shrink: 0; }
+.footer { text-align: center; margin-top: 2rem; font-size: 12px; color: var(--color-text-tertiary); }
+@media (prefers-color-scheme: dark) {
+  .icon-blue { background: #0C447C; color: #B5D4F4; }
+  .icon-teal { background: #085041; color: #9FE1CB; }
+  .icon-purple { background: #3C3489; color: #CECBF6; }
+  .icon-amber { background: #633806; color: #FAC775; }
+}
+</style>
+
+<div class="portal-wrap">
+  <div class="portal-header">
+    <h1>Portal de solicitações</h1>
+    <p>Selecione o tipo de solicitação que deseja abrir</p>
+  </div>
+
+  <div class="cards-grid">
+    <a class="card" href="#" onclick="return false;">
+      <div class="card-icon icon-blue">
+        <i class="ti ti-school" aria-hidden="true"></i>
+      </div>
+      <div class="card-text">
+        <p class="card-title">Solicitação de treinamento</p>
+        <p class="card-desc">Solicite um novo treinamento para sua equipe</p>
+      </div>
+      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="card" href="#" onclick="return false;">
+      <div class="card-icon icon-teal">
+        <i class="ti ti-video" aria-hidden="true"></i>
+      </div>
+      <div class="card-text">
+        <p class="card-title">Suporte para Zoom</p>
+        <p class="card-desc">Solicite suporte técnico para reuniões e webinars</p>
+      </div>
+      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="card" href="#" onclick="return false;">
+      <div class="card-icon icon-purple">
+        <i class="ti ti-link" aria-hidden="true"></i>
+      </div>
+      <div class="card-text">
+        <p class="card-title">Link de frequência</p>
+        <p class="card-desc">Solicite o link de frequência para treinamentos</p>
+      </div>
+      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="card" href="#" onclick="return false;">
+      <div class="card-icon icon-amber">
+        <i class="ti ti-upload" aria-hidden="true"></i>
+      </div>
+      <div class="card-text">
+        <p class="card-title">Upload de arquivo</p>
+        <p class="card-desc">Envie arquivos para o Fortitude</p>
+      </div>
+      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <p class="footer">Compassion · Staff Portal</p>
+</div>
