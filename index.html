@@ -1,81 +1,190 @@
-<style>
-.portal-wrap { padding: 2rem 1rem; max-width: 680px; margin: 0 auto; }
-.portal-header { text-align: center; margin-bottom: 2rem; }
-.portal-header h1 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 6px; }
-.portal-header p { font-size: 14px; color: var(--color-text-secondary); margin: 0; }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 16px; text-decoration: none; transition: border-color 0.15s, background 0.15s; cursor: pointer; }
-.card:hover { border-color: var(--color-border-secondary); background: var(--color-background-secondary); }
-.card:active { transform: scale(0.98); }
-.card-icon { width: 48px; height: 48px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
-.icon-blue { background: #E6F1FB; color: #185FA5; }
-.icon-teal { background: #E1F5EE; color: #0F6E56; }
-.icon-purple { background: #EEEDFE; color: #534AB7; }
-.icon-amber { background: #FAEEDA; color: #854F0B; }
-.card-text { flex: 1; }
-.card-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 3px; }
-.card-desc { font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.4; }
-.card-arrow { color: var(--color-text-tertiary); font-size: 18px; flex-shrink: 0; }
-.footer { text-align: center; margin-top: 2rem; font-size: 12px; color: var(--color-text-tertiary); }
-@media (prefers-color-scheme: dark) {
-  .icon-blue { background: #0C447C; color: #B5D4F4; }
-  .icon-teal { background: #085041; color: #9FE1CB; }
-  .icon-purple { background: #3C3489; color: #CECBF6; }
-  .icon-amber { background: #633806; color: #FAC775; }
-}
-</style>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Solicitações</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<div class="portal-wrap">
-  <div class="portal-header">
-    <h1>Portal de solicitações</h1>
-    <p>Selecione o tipo de solicitação que deseja abrir</p>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .portal {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .header-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+      line-height: 1;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      border-color: #c8c8c8;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .card:active {
+      transform: scale(0.98) translateY(0);
+      box-shadow: none;
+    }
+
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 26px;
+    }
+
+    .icon-blue   { background: #E6F1FB; }
+    .icon-teal   { background: #E1F5EE; }
+    .icon-purple { background: #EEEDFE; }
+    .icon-amber  { background: #FAEEDA; }
+
+    .card-text { flex: 1; }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 3px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    .card-arrow {
+      font-size: 18px;
+      color: #ccc;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .card:hover .card-arrow {
+      color: #999;
+      transform: translateX(3px);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portal">
+    <div class="header">
+      <span class="header-emoji">🏢</span>
+      <h1>Portal de solicitações</h1>
+      <p>Selecione o tipo de solicitação que deseja abrir</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-icon icon-blue">🎓</div>
+        <div class="card-text">
+          <p class="card-title">Solicitação de treinamento</p>
+          <p class="card-desc">Solicite um novo treinamento para sua equipe</p>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-icon icon-teal">🎥</div>
+        <div class="card-text">
+          <p class="card-title">Suporte para Zoom</p>
+          <p class="card-desc">Solicite suporte técnico para reuniões e webinars</p>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-icon icon-purple">🔗</div>
+        <div class="card-text">
+          <p class="card-title">Link de frequência</p>
+          <p class="card-desc">Solicite o link de frequência para treinamentos</p>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="#" target="_blank">
+        <div class="card-icon icon-amber">📤</div>
+        <div class="card-text">
+          <p class="card-title">Upload de arquivo</p>
+          <p class="card-desc">Envie arquivos para o Fortitude</p>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+
+    <p class="footer">Compassion · Staff Portal</p>
   </div>
 
-  <div class="cards-grid">
-    <a class="card" href="#" onclick="return false;">
-      <div class="card-icon icon-blue">
-        <i class="ti ti-school" aria-hidden="true"></i>
-      </div>
-      <div class="card-text">
-        <p class="card-title">Solicitação de treinamento</p>
-        <p class="card-desc">Solicite um novo treinamento para sua equipe</p>
-      </div>
-      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
-    </a>
-
-    <a class="card" href="#" onclick="return false;">
-      <div class="card-icon icon-teal">
-        <i class="ti ti-video" aria-hidden="true"></i>
-      </div>
-      <div class="card-text">
-        <p class="card-title">Suporte para Zoom</p>
-        <p class="card-desc">Solicite suporte técnico para reuniões e webinars</p>
-      </div>
-      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
-    </a>
-
-    <a class="card" href="#" onclick="return false;">
-      <div class="card-icon icon-purple">
-        <i class="ti ti-link" aria-hidden="true"></i>
-      </div>
-      <div class="card-text">
-        <p class="card-title">Link de frequência</p>
-        <p class="card-desc">Solicite o link de frequência para treinamentos</p>
-      </div>
-      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
-    </a>
-
-    <a class="card" href="#" onclick="return false;">
-      <div class="card-icon icon-amber">
-        <i class="ti ti-upload" aria-hidden="true"></i>
-      </div>
-      <div class="card-text">
-        <p class="card-title">Upload de arquivo</p>
-        <p class="card-desc">Envie arquivos para o Fortitude</p>
-      </div>
-      <i class="ti ti-arrow-right card-arrow" aria-hidden="true"></i>
-    </a>
-  </div>
-
-  <p class="footer">Compassion · Staff Portal</p>
-</div>
+</body>
+</html>
